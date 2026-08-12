@@ -5,7 +5,8 @@
     "scripts": {
         "start": "ts-node src/main.ts",
         "dev": "nodemon src/main.ts",
-        "build": "tsc",
+        "build": "npm update @consumet/extensions && tsc",
+        "postinstall": "npm update @consumet/extensions",
         "lint": "prettier --write \"src/**/*.ts\""
     },
     "engines": {
