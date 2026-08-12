@@ -10,19 +10,8 @@ const routes = async (fastify: FastifyInstance, options: RegisterOptions) => {
   fastify.get('/', (_, rp) => {
     rp.status(200).send({
       intro: "Welcome to the reanime provider: check out the provider's website @ https://reanime.to/",
-      routes: ['/instruction', '/:query', '/info', '/watch/:episodeId', '/servers/:episodeId', '/schedule', '/latest', '/top'],
+      routes: ['/:query', '/info', '/watch/:episodeId', '/servers/:episodeId', '/schedule', '/latest', '/top'],
       documentation: 'https://docs.consumet.org/',
-    });
-  });
-
-  fastify.get('/instruction', async (request: FastifyRequest, reply: FastifyReply) => {
-    reply.status(200).send({
-      message: "To use the ReAnime provider in production without facing Cloudflare WAF blocks, you must deploy the application on a VPS (Virtual Private Server) with a clean residential or non-datacenter IP range.",
-      instructions: [
-        "1. Free-tier cloud hosting providers (such as Render, Vercel, or Railway) use datacenter IP ranges that are heavily blocked by Cloudflare's WAF, resulting in HTTP 403 errors.",
-        "2. Running the application locally using a residential IP range bypasses these blocks automatically.",
-        "3. In production, host the Consumet API instance on a VPS with a clean, dedicated non-datacenter IP address to prevent 403 Forbidden responses."
-      ]
     });
   });
 
